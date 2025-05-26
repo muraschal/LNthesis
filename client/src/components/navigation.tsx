@@ -9,7 +9,7 @@ export default function Navigation() {
 
   const handlePdfDownload = () => {
     const link = document.createElement('a');
-    link.href = '/attached_assets/Lightning_Network_Thesis.pdf';
+    link.href = '/Lightning_Network_Thesis.pdf';
     link.download = 'Lightning_Network_Thesis.pdf';
     link.click();
     
@@ -21,7 +21,7 @@ export default function Navigation() {
 
   const handlePodcastDownload = () => {
     const link = document.createElement('a');
-    link.href = '/attached_assets/Lightning_Network_Thesis_Podcast.wav';
+    link.href = '/Lightning_Network_Thesis_Podcast.wav';
     link.download = 'Lightning_Network_Thesis_Podcast.wav';
     link.click();
     
