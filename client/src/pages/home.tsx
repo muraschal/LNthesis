@@ -1,5 +1,6 @@
 import Navigation from "@/components/navigation";
 import HeroSection from "@/components/hero-section";
+import TableOfContents from "@/components/table-of-contents";
 import CompleteThesis from "@/components/complete-thesis";
 import CompleteThesisExtended from "@/components/complete-thesis-extended";
 import CompleteThesisFinal from "@/components/complete-thesis-final";
@@ -39,6 +40,11 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      {/* Table of Contents */}
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        <TableOfContents />
+      </div>
 
       {/* Main Content - Vollständige 22-seitige Lightning Network Thesis */}
       <main className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 pb-12">
