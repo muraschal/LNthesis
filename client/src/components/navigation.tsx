@@ -1,24 +1,34 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { useToast } from "@/hooks/use-toast";
+import { FileText, Headphones, Download } from "lucide-react";
 
 export default function Navigation() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const { toast } = useToast();
 
   const handlePdfDownload = () => {
-    toast({
-      title: "PDF wird generiert",
-      description: "Ihre Forschungsarbeit wird als PDF erstellt...",
-    });
+    const link = document.createElement('a');
+    link.href = '/attached_assets/Lightning_Network_Thesis.pdf';
+    link.download = 'Lightning_Network_Thesis.pdf';
+    link.click();
     
-    // Simulate PDF generation
-    setTimeout(() => {
-      toast({
-        title: "PDF bereit",
-        description: "Die PDF-Version der Forschungsarbeit ist bereit zum Download.",
-      });
-    }, 2000);
+    toast({
+      title: "PDF Download gestartet",
+      description: "Die Lightning Network Thesis wird heruntergeladen.",
+    });
+  };
+
+  const handlePodcastDownload = () => {
+    const link = document.createElement('a');
+    link.href = '/attached_assets/Lightning_Network_Thesis_Podcast.wav';
+    link.download = 'Lightning_Network_Thesis_Podcast.wav';
+    link.click();
+    
+    toast({
+      title: "Podcast Download gestartet",
+      description: "Der Lightning Network Thesis Podcast wird heruntergeladen.",
+    });
   };
 
   const scrollToSection = (sectionId: string) => {
@@ -63,14 +73,28 @@ export default function Navigation() {
             >
               Literatur
             </button>
-            <Button 
-              onClick={handlePdfDownload}
-              variant="outline"
-              size="sm"
-              className="text-xs"
-            >
-              PDF Download
-            </Button>
+            
+            {/* Download Buttons */}
+            <div className="flex items-center space-x-2 border-l border-gray-200 pl-4">
+              <Button 
+                onClick={handlePdfDownload}
+                variant="outline"
+                size="sm"
+                className="text-xs flex items-center gap-1 bg-red-50 hover:bg-red-100 border-red-200 text-red-700"
+              >
+                <FileText className="w-3 h-3" />
+                PDF Thesis
+              </Button>
+              <Button 
+                onClick={handlePodcastDownload}
+                variant="outline"
+                size="sm"
+                className="text-xs flex items-center gap-1 bg-blue-50 hover:bg-blue-100 border-blue-200 text-blue-700"
+              >
+                <Headphones className="w-3 h-3" />
+                Podcast
+              </Button>
+            </div>
           </div>
           <button 
             className="md:hidden text-secondary"
@@ -109,6 +133,24 @@ export default function Navigation() {
             >
               Literatur
             </button>
+            
+            {/* Mobile Download Buttons */}
+            <div className="border-t border-gray-200 pt-2 mt-2">
+              <button
+                onClick={handlePdfDownload}
+                className="flex items-center gap-2 w-full text-left px-3 py-2 text-red-600 hover:bg-red-50"
+              >
+                <FileText className="w-4 h-4" />
+                PDF Thesis herunterladen
+              </button>
+              <button
+                onClick={handlePodcastDownload}
+                className="flex items-center gap-2 w-full text-left px-3 py-2 text-blue-600 hover:bg-blue-50"
+              >
+                <Headphones className="w-4 h-4" />
+                Podcast herunterladen
+              </button>
+            </div>
           </div>
         </div>
       )}
